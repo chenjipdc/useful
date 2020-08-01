@@ -17,9 +17,9 @@ function help(){
 	echo -e "\033[34mproxy            启动goproxy相关代理\033[0m"
 	echo -e "\033[34mcht              简易在线查找文档。可带参数，如：start.sh cht python。github：https://github.com/chubin/cheat.sh\033[0m"
 	echo -e "\033[34mactivemq         启动activemq，需带参数。如：start.sh activemq start, start.sh activemq stop\033[0m"
-	echo -e "\033[34mmycat            启动mycat，需带参数。如：start.sh mycat console\033[0m"
+	echo -e "\033[34mmycat            启动mycat，可带参数。如：start.sh mycat console\033[0m"
 	echo -e "\033[34mnacos            启动nacos，需带参数。如：start.sh nacos start, start.sh nacos stop\033[0m"
-	echo -e "\033[34mseata            启动seata。注：需要启动mysql。\033[0m"
+	echo -e "\033[34mseata            启动seata，可带参数。注：需要启动mysql。\033[0m"
 	echo ''
 	echo -e "\033[33m安装的app（根据个人安装app修改）：\033[0m"
 	echo -e "\033[33mdocker        打开docker\033[0m"
@@ -43,12 +43,15 @@ function help(){
 	echo -e "\033[33mcharles       打开青花瓷代理抓包工具\033[0m"
 	echo -e "\033[33mtm            打开transmit 2\033[0m"
 	echo -e "\033[33mxcode         打开xcode。可带参数。如：start.sh xcode ./xxx.c\033[0m"
-	echo -e "\033[33mdatagrip      打开数据库管理工具datagrip。可带参数。如：start.sh pycharm ./xxx.sql\033[0m"
+	echo -e "\033[33mdatagrip      打开数据库管理工具datagrip。可带参数。如：start.sh datagrip ./xxx.sql\033[0m"
 	echo -e "\033[33mwebstorm      打开webstorm。可带参数。如：start.sh pycharm ./xxx.html\033[0m"
 }
 
+svc=$1
+# 去掉第一个参数，重新组合参数
+shift
 
-case "$1" in
+case "$svc" in
 
 	# ------- 自定义服务 -------
 	'ef-java8')
@@ -63,21 +66,21 @@ case "$1" in
 		~/shell/sh/start_goproxy.sh
 		;;
 	'cht')
-		~/cht.sh $2
+		~/cht.sh $@
 		;;
 	'activemq')
 		cd ~/data/tools/apache-activemq-5.16.0/bin
-		./activemq $2
+		./activemq $@
 		;;
 	'mycat')
 		cd ~/data/tools/mycat/bin
-		./mycat $2
+		./mycat $@
 		;;
 	'nacos')
 		cd ~/data/tools/nacos/bin
-		if [[ $2 = 'start' ]]; then
+		if [[ $1 = 'start' ]]; then
 			./startup.sh
-		elif [[ $2 = 'stop' ]]; then
+		elif [[ $1 = 'stop' ]]; then
 			#statements
 			./shutdown.sh
 		else
@@ -86,7 +89,7 @@ case "$1" in
 		;;
 	'seata')
 		cd ~/data/tools/seata/bin
-		./seata-server.sh
+		./seata-server.sh $@
 		;;
 
 	# ------- 以下为mac app -------
@@ -94,7 +97,7 @@ case "$1" in
 		open -a docker
 		;;
 	'idea')
-		open -a intellij\ idea $2
+		open -a intellij\ idea $@
 		;;
 	'v2ray')
 		open -a v2ray
@@ -103,10 +106,10 @@ case "$1" in
 		open -a postman
 		;;
 	'sublime')
-		open -a sublime\ text $2
+		open -a sublime\ text $@
 		;;
 	'typora')
-		open -a typora $2
+		open -a typora $@
 		;;
 	'vbox')
 		open -a virtualbox
@@ -115,7 +118,7 @@ case "$1" in
 		open -a thunder
 		;;
 	'vscode')
-		open -a visual\ studio\ code $2
+		open -a visual\ studio\ code $@
 		;;
 	'dd')
 		open -a dingtalk
@@ -130,10 +133,10 @@ case "$1" in
 		open -a wechat
 		;;
 	'goland')
-		open -a goland $2
+		open -a goland $@
 		;;
 	'hbuilder')
-		open -a hbuilderx $2
+		open -a hbuilderx $@
 		;;
 	'chrome')
 		open -a google\ chrome
@@ -148,13 +151,13 @@ case "$1" in
 		open -a transmit\ 2
 		;;
 	'xcode')
-		open -a xcode $2
+		open -a xcode $@
 		;;
 	'datagrip')
-		open -a datagrip $2
+		open -a datagrip $@
 		;;
 	'webstorm')
-		open -a webstorm $2
+		open -a webstorm $@
 		;;
 
 	# ------- other --------
