@@ -20,6 +20,7 @@ function help(){
 	echo -e "\033[34mmycat            启动mycat，可带参数。如：start.sh mycat console\033[0m"
 	echo -e "\033[34mnacos            启动nacos，需带参数。如：start.sh nacos start, start.sh nacos stop\033[0m"
 	echo -e "\033[34mseata            启动seata，可带参数。注：需要启动mysql。\033[0m"
+	echo -e "\033[34mhadoop           启动virtualbox headless hadoop节点，参数为start、stop。\033[0m"
 	echo ''
 	echo -e "\033[33m安装的app（根据个人安装app修改）：\033[0m"
 	echo -e "\033[33mdocker        打开docker\033[0m"
@@ -90,6 +91,15 @@ case "$svc" in
 	'seata')
 		cd ~/data/tools/seata/bin
 		./seata-server.sh $@
+		;;
+	'hadoop')
+		if [[ $1 = 'start' ]]; then
+		  for i in {0..3}; do VBoxManage startvm "node0${i}-hadoop$((i+1))" --type headless; done
+		elif [[ $1 = 'stop' ]]; then
+		  for i in {0..3}; do VBoxManage controlvm "node0${i}-hadoop$((i+1))" acpipowerbutton; done
+		else
+			echo '请输入start或者stop。'
+		fi
 		;;
 
 	# ------- 以下为mac app -------
