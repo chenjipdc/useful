@@ -15,37 +15,37 @@ function help(){
 	echo -e "\033[34mef-java8         effective-java on java8本地中文文档。gitee在线文档地址：https://lingcoder.gitee.io/onjava8\033[0m"
 	echo -e "\033[34myapi             yapi文档、测试管理工具，替换swagger-ui。注：需要依赖mongodb。github：https://github.com/YMFE/yapi\033[0m"
 	echo -e "\033[34mproxy            启动goproxy相关代理\033[0m"
-	echo -e "\033[34mcht              简易在线查找文档。可带参数，如：start.sh cht python。github：https://github.com/chubin/cheat.sh\033[0m"
-	echo -e "\033[34mactivemq         启动activemq，需带参数。如：start.sh activemq start, start.sh activemq stop\033[0m"
-	echo -e "\033[34mmycat            启动mycat，可带参数。如：start.sh mycat console\033[0m"
-	echo -e "\033[34mnacos            启动nacos，需带参数。如：start.sh nacos start, start.sh nacos stop\033[0m"
+	echo -e "\033[34mcht              简易在线查找文档。可带参数，如：svc.sh cht python。github：https://github.com/chubin/cheat.sh\033[0m"
+	echo -e "\033[34mactivemq         启动activemq，需带参数。如：svc.sh activemq start, svc.sh activemq stop\033[0m"
+	echo -e "\033[34mmycat            启动mycat，可带参数。如：svc.sh mycat console\033[0m"
+	echo -e "\033[34mnacos            启动nacos，需带参数。如：svc.sh nacos start, svc.sh nacos stop\033[0m"
 	echo -e "\033[34mseata            启动seata，可带参数。注：需要启动mysql。\033[0m"
 	echo -e "\033[34mhadoop           启动virtualbox headless hadoop节点，参数为start、stop。\033[0m"
 	echo ''
 	echo -e "\033[33m安装的app（根据个人安装app修改）：\033[0m"
 	echo -e "\033[33mdocker        打开docker\033[0m"
-	echo -e "\033[33midea          打开idea，可带参数。如：start.sh idea ./pom.xml\033[0m"
+	echo -e "\033[33midea          打开idea，可带参数。如：svc.sh idea ./pom.xml\033[0m"
 	echo -e "\033[33mv2ray         打开v2ray\033[0m"
 	echo -e "\033[33mpostman       打开postman\033[0m"
-	echo -e "\033[33msublime       打开sublime。可带参数。如：start.sh sublime ./xxx.txt\033[0m"
-	echo -e "\033[33mtypora        打开typora。可带参数。如：start.sh typora ./xxx.txt\033[0m"
+	echo -e "\033[33msublime       打开sublime。可带参数。如：svc.sh sublime ./xxx.txt\033[0m"
+	echo -e "\033[33mtypora        打开typora。可带参数。如：svc.sh typora ./xxx.txt\033[0m"
 	echo -e "\033[33mvbox          打开vbox\033[0m"
 	echo -e "\033[33mxl            打开迅雷\033[0m"
-	echo -e "\033[33mvscode        打开vscode。可带参数。如：start.sh vscode ./xxx.txt\033[0m"
+	echo -e "\033[33mvscode        打开vscode。可带参数。如：svc.sh vscode ./xxx.txt\033[0m"
 	echo -e "\033[33mdd            打开钉钉\033[0m"
 	echo -e "\033[33mqq            打开qq\033[0m"
 	echo -e "\033[33msafari        打开safari\033[0m"
 	echo -e "\033[33mwechat        打开wechat\033[0m"
-	echo -e "\033[33mgoland        打开goland。可带参数。如：start.sh goland ./\033[0m"
-	echo -e "\033[33mhbuilder      打开hbuilder。可带参数。如：start.sh hbuilder ./xxx.txt\033[0m"
+	echo -e "\033[33mgoland        打开goland。可带参数。如：svc.sh goland ./\033[0m"
+	echo -e "\033[33mhbuilder      打开hbuilder。可带参数。如：svc.sh hbuilder ./xxx.txt\033[0m"
 	echo -e "\033[33mchrome        打开chrome\033[0m"
-	echo -e "\033[33mpycharm       打开PyCharm。可带参数。如：start.sh pycharm ./xxx.py\033[0m"
+	echo -e "\033[33mpycharm       打开PyCharm。可带参数。如：svc.sh pycharm ./xxx.py\033[0m"
 	echo -e "\033[33mkeym          打开证书管理工具KeyManager\033[0m"
 	echo -e "\033[33mcharles       打开青花瓷代理抓包工具\033[0m"
 	echo -e "\033[33mtm            打开transmit 2\033[0m"
-	echo -e "\033[33mxcode         打开xcode。可带参数。如：start.sh xcode ./xxx.c\033[0m"
-	echo -e "\033[33mdatagrip      打开数据库管理工具datagrip。可带参数。如：start.sh datagrip ./xxx.sql\033[0m"
-	echo -e "\033[33mwebstorm      打开webstorm。可带参数。如：start.sh pycharm ./xxx.html\033[0m"
+	echo -e "\033[33mxcode         打开xcode。可带参数。如：svc.sh xcode ./xxx.c\033[0m"
+	echo -e "\033[33mdatagrip      打开数据库管理工具datagrip。可带参数。如：svc.sh datagrip ./xxx.sql\033[0m"
+	echo -e "\033[33mwebstorm      打开webstorm。可带参数。如：svc.sh pycharm ./xxx.html\033[0m"
 	echo -e "\033[33mclion         打开clion。"
 	echo -e "\033[33mpdf           打开pdf expect。"
 }
@@ -187,9 +187,9 @@ case "$svc" in
 		;;
 	'usage')
 		echo -e '1、进入此shell所在目录'
-		echo -e '2、执行\033[35mchmod +x ./start.sh\033[0m添加可执行权限'
+		echo -e '2、执行\033[35mchmod +x ./svc.sh\033[0m添加可执行权限'
 		echo -e '3、如果安装了zsh：\033[35mvi ~/.zshrc\033[0m(未安装：\033[35mvi /etc/profile\033[0m)'
-		echo -e '4、把shell脚本作为别名start。如：\033[35malias start="~/data/shell/start.sh\033[0m"'
+		echo -e '4、把shell脚本作为别名start。如：\033[35malias start="~/data/shell/svc.sh\033[0m"'
 		echo -e '5、保存退出新开命令行窗口（未安装zsh无需新开，执行\033[35msource /etc/profile\033[0m即可）。则可以使用start命令启动相关程序。如：'
 		echo -e '           \033[35mstart docker\033[0m'
 		echo -e '           \033[35mstart idea\033[0m'
@@ -265,6 +265,6 @@ case "$svc" in
 		fi
 		;;
 	*)
-		echo -e "参数不能识别，请重新输入。或者输入help获取帮助，如：\033[35m./start.sh help\033[0m"
+		echo -e "参数不能识别，请重新输入。或者输入help获取帮助，如：\033[35m./svc.sh help\033[0m"
 		;;
 esac
